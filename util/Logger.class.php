@@ -17,14 +17,19 @@ abstract class Logger{
 	public function __construct($caminho_do_arquivo){
 		$this->caminho_do_arquivo = $caminho_do_arquivo;
 		// Faz o arquivo se não existir
-		file_put_contents($caminho_do_arquivo, '');
+		if(!file_exists($caminho_do_arquivo))
+			file_put_contents($caminho_do_arquivo, $this->cabecalho());
 	}
 	
 	/**
 	 *	Escreve um texto no Log
 	 *	@param $mensagem = mensagem escrita no arquivo de Log
 	 */
-	abstract function escrever($mensagem);
+	public abstract function escrever($mensagem);
+	
+	protected abstract function cabecalho();
+	
+	protected abstract function rodape();
 	
 }
 

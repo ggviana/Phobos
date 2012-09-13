@@ -1,26 +1,23 @@
 <?php
 
 #doc
-#	classname:	LoggerXML
+#	classname:	LoggerTXT
 #	scope:		PUBLIC
 #
 #/doc
 
-class LoggerXML extends Logger{
-	
-	const CABECALHO = "<logs>\n";
-	const RODAPE = '</logs>';
+class LoggerTXT extends Logger{
+	const CABECALHO = "---------------------------------------------------------------------------------\n";
+	const RODAPE = '';
 	
 	/**
 	 *	Escreve um texto no Log
 	 *	@param $mensagem = mensagem escrita no arquivo de Log
 	 */
 	public function escrever($mensagem){
+		$this->cabecalho();
 		$tempo	= date("Y-m-d H:i:s");
-		$texto	= "<log>\n";
-		$texto	.= "<horario>{$tempo}</horario>\n";
-		$texto	.= "<mensagem>{$mensagem}</mensagem>\n";
-		$texto	.= "</log>\n";
+		$texto	= "{$tempo} - {$mensagem}\n";
 		$arquivo = fopen($this->caminho_do_arquivo, 'a');
 		fwrite($arquivo, $texto);
 		fclose($arquivo);
@@ -30,9 +27,7 @@ class LoggerXML extends Logger{
 		return self::CABECALHO;
 	}
 	
-	protected function rodape(){
-		
-	}
+	protected function rodape(){}
 	
 }
 
