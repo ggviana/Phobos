@@ -27,8 +27,14 @@ abstract class Logger{
 	 */
 	public abstract function escrever($mensagem);
 	
+	/**
+	 *	Retorna o Cabeçalho desse Log
+	 */
 	protected abstract function cabecalho();
 	
+	/**
+	 *	Refaz o rodapé do Log
+	 */
 	protected abstract function rodape();
 	
 }

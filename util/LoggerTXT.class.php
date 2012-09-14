@@ -23,11 +23,17 @@ class LoggerTXT extends Logger{
 		fclose($arquivo);
 	}
 	
+	/**
+	 *	Retorna o Cabeçalho desse Log
+	 */
 	protected function cabecalho(){
 		return self::CABECALHO;
 	}
 	
-	protected function rodape(){}
+	/**
+	 *	Refaz o rodapé do Log
+	 */
+	protected function rodape(){ /* Não há necessidade de um rodapé aqui */ }
 	
 }
 
