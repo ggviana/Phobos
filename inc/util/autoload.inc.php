@@ -7,12 +7,12 @@
 function __autoload($classe){
 	foreach(glob("*") as $arquivo){
 		if(file_exists($include = "{$classe}.class.php")){
-			include_once($include);
+			require($include);
 			break;
 		}
 		else if(is_dir($arquivo)){
 			if(file_exists($include = "{$arquivo}/{$classe}.class.php"))
-				include_once($include);
+				require($include);
 		}
 	}
 }

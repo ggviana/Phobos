@@ -1,0 +1,11 @@
+.mensagem
+{
+	 position: absolute;
+	 left: 33%;
+	 top: 33%;
+	 width: 300;
+	 color: black;
+	 background: #DDDDDD;
+	 border: 4px solid #000000;
+	 z-index: 10000000000000000;
+}

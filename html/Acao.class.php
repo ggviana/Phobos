@@ -1,0 +1,44 @@
+<?php
+
+#doc
+#	classname:	Acao
+#	scope:		PUBLIC
+#
+#/doc
+
+class Acao{
+
+	private $url;
+	private $variaveis;
+	
+	/**
+	 *	Constrói uma Ação que dispara um método de uma classe por URL(via GET) 
+	 *	@param $metodo	= método ou função
+	 *	@param $classe	= classe
+	 */
+	public function __construct($metodo, $classe = null){
+		$this->url['classe']		= $classe;
+		$this->url['metodo']		= $metodo;
+	}
+	
+	/**
+	 *	Adiciona variáveis na URL
+	 *	@param $var		= variável
+	 *	@param $valor	= valor
+	 */
+	public function adicionarVariavel($variavel, $valor){
+		$this->variaveis[$variavel]	= $valor;
+	}
+	
+	/**
+	 *	Transforma a Ação em URL
+	 */
+	public function serializar(){
+		if($this->variaveis)
+			$this->url = array_merge($this->url, $this->variaveis);
+		return '?' . http_build_query($this->url);
+	}
+
+}
+
+?>
