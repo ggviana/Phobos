@@ -20,7 +20,7 @@ final class Transacao{
 	public static function abrir($arquivo){
 		if(empty($conexao)){
 			self::$logger	= null;
-			self::$conexao	= Conexao::abrir($arquivo);
+			self::$conexao	= Conexao::abrir($arquivo);	
 			self::$conexao->beginTransaction();
 		}
 		else throw new Exception('Já há uma conexão Ativa');
